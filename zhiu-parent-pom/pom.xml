@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.zhiu</groupId>
+    <artifactId>zhiu-parent-pom</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>zhiu-boot-parent</module>
+    </modules>
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <branch>dev</branch>
+            </properties>
+        </profile>
+        <profile>
+            <id>qa</id>
+            <properties>
+                <branch>qa</branch>
+            </properties>
+        </profile>
+        <profile>
+            <id>release</id>
+            <properties>
+                <branch>release</branch>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <properties>
+        <zhiu.version>1.0.0-SNAPSHOT</zhiu.version>
+        <java.version>1.8</java.version>
+        <java.source.version>1.8</java.source.version>
+        <java.target.version>1.8</java.target.version>
+        <file.encoding>UTF-8</file.encoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Spring相关依赖包  start-->
+        <spring-boot.version>2.1.3.RELEASE</spring-boot.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <springframework.version>5.1.6.RELEASE</springframework.version>
+        <spring.data.hadoop>2.5.0.RELEASE</spring.data.hadoop>
+        <spring-boot-admin.version>2.1.6</spring-boot-admin.version>
+        <!-- Spring相关依赖包  end-->
+
+        <!-- 日志包  start-->
+        <log4j.version>1.2.17</log4j.version>
+        <slf4j.version>1.7.12</slf4j.version>
+        <commons.logging.version>1.2</commons.logging.version>
+        <logback.kafka.appender.version>0.2.0-RC2</logback.kafka.appender.version>
+        <logback.kafka.encoder.version>5.2</logback.kafka.encoder.version>
+        <kafka.client.version>2.2.1</kafka.client.version>
+        <!-- 日志包  end-->
+
+
+        <!-- comons相关工具包  start-->
+        <commons-io.version>2.2</commons-io.version>
+        <commons.lang.version>2.6</commons.lang.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <commons.lang3.version>3.9</commons.lang3.version>
+        <!-- comons相关工具包  end-->
+
+        <!-- HttpClient相关包  start-->
+        <httpcore.version>4.4.1</httpcore.version>
+        <httpclient.version>4.5</httpclient.version>
+        <fluent-hc.version>4.5.2</fluent-hc.version>
+        <!-- HttpClient相关包  end-->
+
+        <!-- 数据库相关依赖包  start-->
+        <jedis.version>2.9.0</jedis.version>
+        <druid.version>1.1.16</druid.version>
+        <querydsl.version>4.1.3</querydsl.version>
+        <hbase.client>1.4.5</hbase.client>
+        <!-- 数据库相关依赖包  end-->
+
+        <!-- 其他依赖包  start-->
+        <fastjson.version>1.2.44</fastjson.version>
+        <dozer.version>5.5.1</dozer.version>
+        <guava.version>18.0</guava.version>
+        <poi.version>3.11</poi.version>
+        <ganymed-ssh2.version>build210</ganymed-ssh2.version>
+        <javapoet.version>1.1.0</javapoet.version>
+        <jackson-databind.version>2.9.8</jackson-databind.version>
+        <commons-fileupload.version>1.3.3</commons-fileupload.version>
+        <!-- 其他依赖包  end-->
+
+        <!-- Maven插件相关  start-->
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
+        <maven.jar.plugin.version>2.6</maven.jar.plugin.version>
+        <maven.clean.plugin.version>2.6.1</maven.clean.plugin.version>
+        <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
+        <maven.war.plugin.version>2.6</maven.war.plugin.version>
+        <maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
+        <maven.assembly.plugin.version>2.5.3</maven.assembly.plugin.version>
+        <maven.source.plugin.version>2.4</maven.source.plugin.version>
+        <maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
+        <maven.enforcer.plugin.version>1.4</maven.enforcer.plugin.version>
+        <build.helper.maven.plugin.version>1.9.1</build.helper.maven.plugin.version>
+        <apt.maven.plugin.version>1.1.3</apt.maven.plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <copy-rename-maven-plugin.version>1.0.1</copy-rename-maven-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <docker-maven-plugin.version>1.2.1</docker-maven-plugin.version>
+        <!-- Maven插件相关  end-->
+        <!--lombok-->
+        <lombok.verison>1.18.8</lombok.verison>
+    </properties>
+    <repositories>
+        <repository>
+            <id>maven-public</id>
+            <name>maven-public</name>
+            <url>http://nexus.zhiutech.com/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>maven-aliyun</id>
+            <name>maven-aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>zhiu_snapshot</id>
+            <name>zhiu snapshot</name>
+            <url>http://nexus.zhiutech.com/repository/zhiu_snapshot/</url>
+        </repository>
+    </distributionManagement>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring相关依赖  start-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-hadoop</artifactId>
+                <version>${spring.data.hadoop}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${springframework.version}</version>
+            </dependency>
+            <!-- Spring相关依赖  end-->
+
+            <!-- 日志相关依赖  start-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons.logging.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.danielwegener</groupId>
+                <artifactId>logback-kafka-appender</artifactId>
+                <version>${logback.kafka.appender.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logback.kafka.encoder.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.client.version}</version>
+            </dependency>
+            <!-- 日志相关依赖  end-->
+
+            <!-- 数据库相关依赖  start-->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-client</artifactId>
+                <version>${hbase.client}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.elasticsearch</groupId>
+                        <artifactId>elasticsearch</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-common</artifactId>
+                <version>${hbase.client}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <scope>provided</scope>
+                <version>${querydsl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-sql-spatial</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+
+            <!-- 数据库相关依赖  end-->
+
+            <!-- commons相关工具包  start-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+            <!-- commons相关工具包  end-->
+            <!-- HttpClient相关依赖  start-->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>${httpcore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>fluent-hc</artifactId>
+                <version>${fluent-hc.version}</version>
+            </dependency>
+            <!-- HttpClient相关依赖  end-->
+
+            <!-- 其他依赖  start-->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>${dozer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup</groupId>
+                <artifactId>javapoet</artifactId>
+                <version>${javapoet.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-databind.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>ch.ethz.ganymed</groupId>
+                <artifactId>ganymed-ssh2</artifactId>
+                <version>${ganymed-ssh2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.verison}</version>
+            </dependency>
+            <!-- 其他依赖  end-->
+
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.danielwegener</groupId>
+            <artifactId>logback-kafka-appender</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+</project>

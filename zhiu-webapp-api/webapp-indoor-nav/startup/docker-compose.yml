@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  ${project.artifactId}:
+    image: ${docker.repostory}/${docker.registry.name}/${project.artifactId}:${branch}-v${zhiu.version}
+    container_name: ${project.artifactId}
+    environment:
+      - TZ=Asia/Shanghai
+      - server.port=${app.port}
+    ports:
+      - "${app.port}:${app.port}"
+    volumes:
+      - "./logs:/logs"
+    restart: always
+    network_mode: "bridge"
+
